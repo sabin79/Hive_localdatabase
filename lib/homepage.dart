@@ -13,7 +13,7 @@ class _HomePageState extends State<HomePage> {
   final _myBox = Hive.box('mybox');
   // write mehod
   void writeData() {
-    _myBox.put(2, 'How are you ');
+    _myBox.put(3, 'helllo ');
     print(_myBox.get(1));
   }
 
@@ -23,7 +23,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   // delete method
-  void deleteData() {}
+  void deleteData() async {
+    await _myBox.delete(1);
+    print("Delete is sucessfull");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,6 @@ class _HomePageState extends State<HomePage> {
               color: Colors.blue[200],
               child: const Text(
                 "write",
-                style: TextStyle(color: Colors.white),
               ),
             ),
             MaterialButton(
